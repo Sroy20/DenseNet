@@ -9,7 +9,7 @@ from keras.optimizers import Adam
 from keras.utils import np_utils
 import importlib
 import densenet
-import normalisation
+import utilities
 
 def run(dataset, batch_size, nb_epoch, depth, nb_dense_block, nb_filter, growth_rate, dropout_rate, learning_rate, weight_decay):
     """ Run CIFAR10 experiments
@@ -36,7 +36,7 @@ def run(dataset, batch_size, nb_epoch, depth, nb_dense_block, nb_filter, growth_
     (X_train, y_train), (X_test, y_test) = data_module.load_data()
 
     #Normalise data
-    X_train, X_test = normalisation.normalise_data(dataset, X_train, X_test)
+    X_train, X_test = utilities.normalise_data(dataset, X_train, X_test)
 
     nb_classes = len(np.unique(y_train))
     img_dim = X_train.shape[1:]
