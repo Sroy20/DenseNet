@@ -21,16 +21,9 @@ def conv_factory(x, nb_filter, dropout_rate=None, weight_decay=1E-4):
     :rtype: keras network
     """
 
-    x = BatchNormalization(mode=0,
-                           axis=1,
-                           gamma_regularizer=l2(weight_decay),
-                           beta_regularizer=l2(weight_decay))(x)
+    x = BatchNormalization(mode=0, axis=1, gamma_regularizer=l2(weight_decay), beta_regularizer=l2(weight_decay))(x)
     x = Activation('relu')(x)
-    x = Convolution2D(nb_filter, 3, 3,
-                      init="he_uniform",
-                      border_mode="same",
-                      bias=False,
-                      W_regularizer=l2(weight_decay))(x)
+    x = Convolution2D(nb_filter, 3, 3, init="he_uniform", border_mode="same", bias=False, W_regularizer=l2(weight_decay))(x)
     if dropout_rate:
         x = Dropout(dropout_rate)(x)
 

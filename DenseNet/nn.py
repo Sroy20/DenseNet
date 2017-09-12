@@ -8,7 +8,7 @@ import numpy as np
 from keras.optimizers import Adam
 from keras.utils import np_utils
 import importlib
-from DenseNet import densenet
+import densenet
 
 def run(dataset, batch_size, nb_epoch, depth, nb_dense_block, nb_filter, growth_rate, dropout_rate, learning_rate, weight_decay):
     """ Run CIFAR10 experiments
