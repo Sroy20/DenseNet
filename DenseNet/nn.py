@@ -1,14 +1,16 @@
 from __future__ import print_function
 
 import json
-import keras.backend as K
-import numpy as np
 import os
 import time
+
+import keras.backend as K
+import numpy as np
 from keras.datasets import cifar10
 from keras.optimizers import Adam
 from keras.utils import np_utils
-from models import densenet
+
+from DenseNet import densenet
 
 
 def run(batch_size, nb_epoch, depth, nb_dense_block, nb_filter, growth_rate, dropout_rate, learning_rate, weight_decay, plot_architecture):
