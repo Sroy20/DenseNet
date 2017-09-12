@@ -46,7 +46,6 @@ def run(dataset, batch_size, nb_epoch, depth, nb_dense_block, nb_filter, growth_
     Y_test = np_utils.to_categorical(y_test, nb_classes)
 
 
-
     ###################
     # Construct model #
     ###################
