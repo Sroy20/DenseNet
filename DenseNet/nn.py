@@ -3,7 +3,6 @@ from __future__ import print_function
 import json
 import os
 import time
-import keras
 import keras.backend as K
 import numpy as np
 from keras.optimizers import Adam
@@ -11,8 +10,7 @@ from keras.utils import np_utils
 import importlib
 from DenseNet import densenet
 
-
-def run(dataset, batch_size, nb_epoch, depth, nb_dense_block, nb_filter, growth_rate, dropout_rate, learning_rate, weight_decay, plot_architecture):
+def run(dataset, batch_size, nb_epoch, depth, nb_dense_block, nb_filter, growth_rate, dropout_rate, learning_rate, weight_decay):
     """ Run CIFAR10 experiments
 
     :param batch_size: int -- batch size
@@ -90,10 +88,6 @@ def run(dataset, batch_size, nb_epoch, depth, nb_dense_block, nb_filter, growth_
                   optimizer=opt,
                   metrics=["accuracy"])
 
-    if plot_architecture:
-        from keras.utils.visualize_util import plot
-        plot(model, to_file='./figures/densenet_archi.png', show_shapes=True)
-
     ####################
     # Network training #
     ####################
@@ -147,3 +141,6 @@ def run(dataset, batch_size, nb_epoch, depth, nb_dense_block, nb_filter, growth_
         json_file = os.path.join('./log/experiment_log_cifar10.json')
         with open(json_file, 'w') as fp:
             json.dump(d_log, fp, indent=4, sort_keys=True)
+
+    #Save model
+    model.save('./trained_models/trained_model_cifar10.h5')
