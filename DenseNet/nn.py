@@ -3,17 +3,16 @@ from __future__ import print_function
 import json
 import os
 import time
-
+import keras
 import keras.backend as K
 import numpy as np
-from keras.datasets import cifar10
 from keras.optimizers import Adam
 from keras.utils import np_utils
-
+import importlib
 from DenseNet import densenet
 
 
-def run(batch_size, nb_epoch, depth, nb_dense_block, nb_filter, growth_rate, dropout_rate, learning_rate, weight_decay, plot_architecture):
+def run(dataset, batch_size, nb_epoch, depth, nb_dense_block, nb_filter, growth_rate, dropout_rate, learning_rate, weight_decay, plot_architecture):
     """ Run CIFAR10 experiments
 
     :param batch_size: int -- batch size
@@ -34,7 +33,8 @@ def run(batch_size, nb_epoch, depth, nb_dense_block, nb_filter, growth_rate, dro
     ###################
 
     # the data, shuffled and split between train and test sets
-    (X_train, y_train), (X_test, y_test) = cifar10.load_data()
+    data_module = importlib.import_module('keras.datasets.' + dataset)
+    (X_train, y_train), (X_test, y_test) = data_module.load_data()
 
     nb_classes = len(np.unique(y_train))
     img_dim = X_train.shape[1:]

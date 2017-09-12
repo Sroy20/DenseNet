@@ -5,7 +5,8 @@ import os
 
 if __name__ == '__main__':
 
-    parser = argparse.ArgumentParser(description='Run CIFAR10 experiment')
+    parser = argparse.ArgumentParser(description='Run an image classification experiment')
+    parser.add_argument('--dataset', type=str, default='cifar10', help='Dataset name')
     parser.add_argument('--batch_size', default=64, type=int, help='Batch size')
     parser.add_argument('--nb_epoch', default=30, type=int, help='Number of epochs')
     parser.add_argument('--depth', type=int, default=7, help='Network depth')
@@ -30,8 +31,5 @@ if __name__ == '__main__':
 
     from DenseNet import nn
 
-    nn.run(args.batch_size, args.nb_epoch, args.depth, args.nb_dense_block, args.nb_filter, args.growth_rate,
-           args.dropout_rate,
-           args.learning_rate,
-           args.weight_decay,
-           args.plot_architecture)
+    nn.run(args.dataset, args.batch_size, args.nb_epoch, args.depth, args.nb_dense_block, args.nb_filter, args.growth_rate,
+           args.dropout_rate, args.learning_rate, args.weight_decay, args.plot_architecture)
