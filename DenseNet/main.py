@@ -8,7 +8,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Run an image classification experiment')
     parser.add_argument('--dataset', type=str, default='cifar10', help='Dataset name')
     parser.add_argument('--batch_size', default=64, type=int, help='Batch size')
-    parser.add_argument('--nb_epoch', default=30, type=int, help='Number of epochs')
+    parser.add_argument('--nb_epoch', default=2, type=int, help='Number of epochs')
     parser.add_argument('--depth', type=int, default=7, help='Network depth')
     parser.add_argument('--nb_dense_block', type=int, default=1, help='Number of dense blocks')
     parser.add_argument('--nb_filter', type=int, default=16, help='Initial number of conv filters')
