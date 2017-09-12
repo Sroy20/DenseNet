@@ -138,9 +138,9 @@ def run(dataset, batch_size, nb_epoch, depth, nb_dense_block, nb_filter, growth_
         d_log["test_loss"] = list_test_loss
         d_log["learning_rate"] = list_learning_rate
 
-        json_file = os.path.join('./log/experiment_log_cifar10.json')
+        json_file = os.path.join('./log/experiment_log_'+ dataset + '.json')
         with open(json_file, 'w') as fp:
             json.dump(d_log, fp, indent=4, sort_keys=True)
 
     #Save model
-    model.save('./trained_models/trained_model_cifar10.h5')
+    model.save('./trained_models/trained_model_' + dataset + '.h5')
