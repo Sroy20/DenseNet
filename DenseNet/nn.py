@@ -134,7 +134,7 @@ def run(dataset, batch_size, nb_epoch, depth, nb_dense_block, nb_filter, growth_
         list_test_loss.append([test_logloss, test_acc])
         list_learning_rate.append(float(K.get_value(model.optimizer.lr)))
         # to convert numpy array to json serializable
-        print('Epoch %s/%s, Time: %s' % (e + 1, nb_epoch, time.time() - start))
+        print('Epoch %s/%s, Time: %s, test accuracy: %f' % (e + 1, nb_epoch, time.time() - start, test_acc))
 
         d_log = {}
         d_log["batch_size"] = batch_size
