@@ -1,2 +1,2 @@
-# DeepLearningAnthology
-In this repository, I have tried to implement various modern deep learning architectures. 
+# DenseNet
+In this repository, I have implemented the DenseNet architecture. 
